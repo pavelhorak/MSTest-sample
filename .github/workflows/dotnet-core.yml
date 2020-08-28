@@ -19,7 +19,5 @@ jobs:
         dotnet-version: 3.1.301
     - name: Install dependencies
       run: dotnet restore
-    - name: CD
-      run: cd PrimeService.Tests
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test PrimeService\PrimeService.csproj --no-restore --verbosity normal
