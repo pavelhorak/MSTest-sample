@@ -20,4 +20,4 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Test
-      run: dotnet test PrimeService.Tests\PrimeService.Tests.csproj --no-restore --verbosity normal
+      run: dotnet test PrimeService.Tests\PrimeService.Tests.csproj --no-restore --collect:"Code Coverage"
