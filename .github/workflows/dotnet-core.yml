@@ -20,6 +20,11 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Find CodeCoverage
-      run: forfiles /P c:\ /S /M codecoverage.exe /C "cmd /c echo @PATH" 2>nul
+      run: forfiles /P c:\ /S /M codecoverage.exe /C "cmd /c echo @PATH" 2>nul > output.txt
+    - name: Upload result for job
+      uses: actions/upload-artifact@v2
+      with:
+        name: output
+        path: output.txt
     - name: Test
       run: dotnet test PrimeService.Tests\PrimeService.Tests.csproj --no-restore --collect:"Code Coverage"
