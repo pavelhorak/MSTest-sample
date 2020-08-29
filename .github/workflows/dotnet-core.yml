@@ -19,8 +19,9 @@ jobs:
         dotnet-version: 3.1.301
     - name: Install dependencies
       run: dotnet restore
-    - name: Find CodeCoverage
-      run: forfiles /P c:\ /S /M codecoverage.exe /C "cmd /c echo @PATH" 2>nul > output.txt
+    - shell: bash
+      run: |
+        find / -name 'codecoverage.exe' > output.txt
     - name: Upload result for job
       uses: actions/upload-artifact@v2
       with:
