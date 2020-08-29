@@ -21,7 +21,7 @@ jobs:
       run: dotnet restore
     - shell: bash
       run: |
-        find / -name 'codecoverage.exe' > output.txt
+        find /hostedtoolcache/windows -name 'codecoverage.exe' > output.txt
     - name: Upload result for job
       uses: actions/upload-artifact@v2
       with:
