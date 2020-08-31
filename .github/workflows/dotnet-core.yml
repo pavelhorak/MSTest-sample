@@ -19,13 +19,5 @@ jobs:
         dotnet-version: 3.1.301
     - name: Install dependencies
       run: dotnet restore
-    - shell: bash
-      run: |
-         find .nuget/ -name "codecoverage.exe" > output.txt
-    - name: Upload result for job
-      uses: actions/upload-artifact@v2
-      with:
-        name: output
-        path: output.txt
     - name: Test
-      run: dotnet test PrimeService.Tests\PrimeService.Tests.csproj --no-restore --collect:"Code Coverage"
+      run: dotnet test PrimeService.Tests\PrimeService.Tests.csproj --no-restore
