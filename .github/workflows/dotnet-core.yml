@@ -25,6 +25,8 @@ jobs:
       run: |
         echo "Running FIO"
         PowerShell Get-PsDrive -PsProvider FileSystem
+        where dotnet
+        dotnet --version
         D:\a\MSTest-sample\MSTest-sample\fio --randrepeat=1 --direct=1 --gtod_reduce=1 --name=test --bs=128k --iodepth=32 --readwrite=rw --rwmixread=75 --size=200M --ioengine=windowsaio --filename=PhysicalDrive1 --thread=1
       
 
