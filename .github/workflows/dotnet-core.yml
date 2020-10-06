@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -24,7 +24,9 @@ jobs:
     - name: Fio benchmark
       run: |
         echo "Running FIO"
-        PowerShell Get-PsDrive -PsProvider FileSystem
+#        PowerShell Get-PsDrive -PsProvider FileSystem
+        sudo apt-get install fio
+        fio --randrepeat=1 --direct=1 --gtod_reduce=1 --name=test --bs=128k --iodepth=32 --readwrite=rw --rwmixread=75 --size=200M --ioengine=windowsaio --filename=PhysicalDrive1 --thread=1
         dotnet restore -v d
 #        D:\a\MSTest-sample\MSTest-sample\fio --randrepeat=1 --direct=1 --gtod_reduce=1 --name=test --bs=128k --iodepth=32 --readwrite=rw --rwmixread=75 --size=200M --ioengine=windowsaio --filename=PhysicalDrive1 --thread=1
       
