@@ -26,7 +26,7 @@ jobs:
         echo "Running FIO"
         sudo apt-get update
         sudo apt-get install fio
-        fio --randrepeat=1 --direct=1 --gtod_reduce=1 --name=test --bs=128k --iodepth=32 --readwrite=rw --rwmixread=75 --size=200M --ioengine=windowsaio --filename=PhysicalDrive1 --thread=1
+        fio --randrepeat=1 --direct=1 --gtod_reduce=1 --name=test --bs=128k --iodepth=32 --readwrite=rw --rwmixread=75 --size=200M --filename=PhysicalDrive1 --thread=1
         dotnet restore -v d
 #        D:\a\MSTest-sample\MSTest-sample\fio --randrepeat=1 --direct=1 --gtod_reduce=1 --name=test --bs=128k --iodepth=32 --readwrite=rw --rwmixread=75 --size=200M --ioengine=windowsaio --filename=PhysicalDrive1 --thread=1
 #       PowerShell Get-PsDrive -PsProvider FileSystem
