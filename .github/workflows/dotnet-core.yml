@@ -22,9 +22,8 @@ jobs:
 #    - name: Test
 #      run: dotnet test PrimeService.Tests/PrimeService.Tests.csproj --no-restore
     - name: Fio benchmark
-      run: |
-      PowerShell "Get-PhysicalDisk | Format-Table -AutoSize"
-      fio --list
+      run: PowerShell "Get-PhysicalDisk | Format-Table -AutoSize"
+#      fio --list
 #      fio --randrepeat=1 --direct=1 --gtod_reduce=1 --name=test --bs=128k --iodepth=32 --readwrite=rw --rwmixread=75 --size=200M --ioengine=windowsaio --filename=PhysicalDrive1 --thread=1
       
 
