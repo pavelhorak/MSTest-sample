@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Test
-      run: dotnet test --logger GitHubActions PrimeService.Tests/PrimeService.Tests.csproj --no-restore
+      run: dotnet test PrimeService.Tests/PrimeService.Tests.csproj --no-restore
 #    - name: Fio benchmark
 #      run: |
 #         dotnet restore -v d
