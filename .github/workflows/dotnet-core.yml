@@ -19,8 +19,10 @@ jobs:
 #        dotnet-version: 3.1.301
     - name: Install dependencies
       run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --logger GitHubActions PrimeService.Tests/PrimeService.Tests.csproj --no-restore || cd .
+      run: dotnet test --no-build --no-restore --logger GitHubActions PrimeService.Tests/PrimeService.Tests.csproj || cd .
 #    - name: Fio benchmark
 #      run: |
 #         dotnet restore -v d
