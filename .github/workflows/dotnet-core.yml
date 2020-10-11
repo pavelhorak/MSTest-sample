@@ -22,7 +22,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --no-restore --logger GitHubActions PrimeService.Tests/PrimeService.Tests.csproj || cd .
+      run: dotnet test --no-build --no-restore --logger "github;name=my-test-report;GITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}" PrimeService.Tests/PrimeService.Tests.csproj || cd .
 #    - name: Fio benchmark
 #      run: |
 #         dotnet restore -v d
