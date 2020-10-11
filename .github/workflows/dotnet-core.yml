@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -17,13 +17,13 @@ jobs:
 #      uses: actions/setup-dotnet@v1
 #      with:
 #        dotnet-version: 3.1.301
-#    - name: Install dependencies
-#      run: dotnet restore
-#    - name: Test
-#      run: dotnet test PrimeService.Tests/PrimeService.Tests.csproj --no-restore
-    - name: Fio benchmark
-      run: |
-         dotnet restore -v d
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Test
+      run: dotnet test --logger GitHubActions PrimeService.Tests/PrimeService.Tests.csproj --no-restore
+#    - name: Fio benchmark
+#      run: |
+#         dotnet restore -v d
 #        echo "Running FIO"
 #        sudo apt-get update
 #        sudo apt-get install fio
