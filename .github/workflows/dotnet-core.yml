@@ -27,7 +27,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Run tests
-      run: dotnet test --collect:"Code Coverage" --DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.CoverageFileName="${{ github.workspace }}\my.coverage" --no-restore --logger "github;name=my-test-report;GITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}" || cd .
+      run: dotnet test --no-restore --logger "github;name=my-test-report;GITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}" --collect:"Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.CoverageFileName="${{ github.workspace }}/my.coverage" || cd .
       working-directory: ${{ github.workspace }}
 #    - name: Fio benchmark
 #      run: |
