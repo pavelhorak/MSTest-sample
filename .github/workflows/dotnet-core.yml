@@ -19,12 +19,13 @@ jobs:
 #        dotnet-version: 3.1.301
     - name: Install dependencies
       run: |
-        dotnet add PrimeService.Tests/PrimeService.Tests.csproj package GitHub.TestLogger --no-restore
+        dotnet add package GitHub.TestLogger --no-restore
         dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --no-restore --logger "github;name=my-test-report;GITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}" PrimeService.Tests/PrimeService.Tests.csproj || cd .
+    - name: Run tests
+      run: dotnet test --no-build --no-restore --logger "github;name=my-test-report;GITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}" || cd .
+      working-directory: ${{ github.workspace }}
 #    - name: Fio benchmark
 #      run: |
 #         dotnet restore -v d
