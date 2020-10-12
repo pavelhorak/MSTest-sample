@@ -20,12 +20,14 @@ jobs:
     - name: Install dependencies
       run: |
         dotnet add PrimeService.Tests package GitHub.TestLogger --no-restore
+        dotnet add PrimeService.Tests package coverlet.collector --no-restore
+        dotnet add PrimeService.Tests package coverlet.msbuild --no-restore
         dotnet restore
       working-directory: ${{ github.workspace }}
     - name: Build
       run: dotnet build --no-restore
     - name: Run tests
-      run: dotnet test --no-build --no-restore --logger "github;name=my-test-report;GITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}" || cd .
+      run: dotnet test /p:CollectCoverage=true --no-restore --logger "github;name=my-test-report;GITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}" || cd .
       working-directory: ${{ github.workspace }}
 #    - name: Fio benchmark
 #      run: |
