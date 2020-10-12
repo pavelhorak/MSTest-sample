@@ -19,7 +19,7 @@ jobs:
 #        dotnet-version: 3.1.301
     - name: Install dependencies
       run: |
-        dotnet add package GitHub.TestLogger --no-restore
+        dotnet add PrimeService.Tests package GitHub.TestLogger --no-restore
         dotnet restore
       working-directory: ${{ github.workspace }}
     - name: Build
