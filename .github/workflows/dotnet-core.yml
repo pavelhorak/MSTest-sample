@@ -26,7 +26,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Run tests
-      run: dotnet test --collect:"XPlat Code Coverage" --no-build --no-restore --logger \github;name=my-test-report;GITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}\" || cd .
+      run: dotnet test --collect:"XPlat Code Coverage" --no-build --no-restore --logger "github;name=my-test-report;GITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}" || cd .
       working-directory: ${{ github.workspace }}
 #    - name: Fio benchmark
 #      run: |
