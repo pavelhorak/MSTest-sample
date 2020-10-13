@@ -19,14 +19,14 @@ jobs:
     - name: Install dependencies
       run: |
         dotnet add PrimeService.Tests package GitHub.TestLogger -v 1.0.1 --no-restore
-        dotnet add PrimeService.Tests package coverlet.collector -v 1.3.0 --no-restore
+        dotnet add PrimeService.Tests package coverlet.msbuild -v 2.9.0 --no-restore
         dotnet restore
-#        dotnet add PrimeService.Tests package coverlet.msbuild -v 2.9.0 --no-restore
+#        dotnet add PrimeService.Tests package coverlet.collector -v 1.3.0 --no-restore
       working-directory: ${{ github.workspace }}
     - name: Build
       run: dotnet build --no-restore
     - name: Run tests
-      run: dotnet test --collect:"XPlat Code Coverage" --no-build --no-restore --logger "github;name=my-test-report;GITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}" || cd .
+      run: dotnet test /p:CollectCoverage=true --no-build --no-restore --logger "github;name=my-test-report;GITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}" || cd .
       working-directory: ${{ github.workspace }}
     - name: ReportGenerator
       uses: danielpalme/ReportGenerator-GitHub-Action@4.5.8
