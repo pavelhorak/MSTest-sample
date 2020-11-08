@@ -26,7 +26,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Run tests
-      run: dotnet test /p:CollectCoverage=true --no-build --no-restore --logger "GitHubActions;report-warnings=false"
+      run: dotnet test /p:CollectCoverage=true --no-build --no-restore --logger "GitHubActions;report-warnings=false" || cd .
       working-directory: ${{ github.workspace }}
     - name: ReportGenerator
       uses: danielpalme/ReportGenerator-GitHub-Action@4.7.1
